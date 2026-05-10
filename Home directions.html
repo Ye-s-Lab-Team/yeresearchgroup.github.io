@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home hero directions — Ye's Research Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Google+Sans+Code:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/styles.css" />
+  <style>
+    html, body { background: #e9eaec; }
+    .board-inner { width: 1440px; background: var(--paper); color: var(--ink); }
+    .board-note { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing:0.04em; padding: 12px 48px; border-bottom: 1px solid var(--rule); display:flex; justify-content:space-between; text-transform:uppercase; background: var(--paper-2); }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="src/data.jsx"></script>
+  <script type="text/babel" src="src/chrome.jsx"></script>
+  <script type="text/babel" src="src/page-home.jsx"></script>
+
+  <script type="text/babel">
+    function Board({ variant }) {
+      return (
+        <div className="board-inner">
+          <div className="board-note">
+            <span>Direction {variant.toUpperCase()}</span>
+            <span>Ye's Research Group · Home · 1440 × auto</span>
+          </div>
+          <Nav current="home" onNav={()=>{}} />
+          {variant === 'a' && <HeroA />}
+          {variant === 'b' && <HeroB />}
+          {variant === 'c' && <HeroC />}
+          <Ticker />
+        </div>
+      );
+    }
+
+    function Canvas() {
+      return (
+        <DCRoot title="Home hero — 3 directions" subtitle="Ye's Research Group · Spring 2026">
+          <DCSection id="heroes" title="Home page · hero directions" subtitle="Quiet modern, cool neutrals, single accent. Vary the typographic attitude.">
+            <DCArtboard id="a" label="A · Grotesque manifesto" width={1440} height={1320}>
+              <Board variant="a" />
+            </DCArtboard>
+            <DCArtboard id="b" label="B · Editorial italic" width={1440} height={1320}>
+              <Board variant="b" />
+            </DCArtboard>
+            <DCArtboard id="c" label="C · Split feature" width={1440} height={1100}>
+              <Board variant="c" />
+            </DCArtboard>
+          </DCSection>
+        </DCRoot>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<Canvas />);
+  </script>
+</body>
+</html>
