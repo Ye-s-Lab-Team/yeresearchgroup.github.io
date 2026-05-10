@@ -288,7 +288,7 @@ section.block.tight { padding: 48px 0; }
 .hero-bg-img {
   position: absolute;
   inset: 0;
-  background-image: url('assets/background.jpeg');
+  background-image: url('../assets/background.jpeg');
   background-size: cover;
   background-position: center;
   /* desaturate the photo completely so the #20314d tint reads cleanly */
